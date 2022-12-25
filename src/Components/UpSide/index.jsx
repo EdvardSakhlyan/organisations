@@ -1,14 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {AppBar, Box, Button,Toolbar, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import {Search,SearchIconWrapper,StyledInputBase} from "../MUI/styledComponents"
-import BasicModal from "./BasicModal/BasicModal";
-import AddCard from "./Card/AddCard";
-import context from "../Context/context";
-import cards from "../db"
-import MockRequest from "../MockRequest/MockRequest";
+import {Search,SearchIconWrapper,StyledInputBase} from "../../MUI/styledComponents"
+import BasicModal from "../BasicModal";
+import AddCard from "../Card/AddCard";
 
-const UpSide = ({cards}) => {
+const UpSide = ({totalCount}) => {
 
     const [open, setOpen] = React.useState(false);
 
@@ -26,22 +23,20 @@ const UpSide = ({cards}) => {
         }
     }
 
-    const {setCardsArray , loadedUsers} = useContext(context)
+    // const {setCardsArray} = useContext(context)
 
-    console.log(searchedValue)
-
-    useEffect(() => {
-        let searched = searchedValue.toLowerCase().trim().replace(/ /g, '')
-        if (!searchedValue){
-            setCardsArray(MockRequest(loadedUsers).arr)
-        }
-        if (/^[a-zA-Z1-9 ]+$/i.test(searchedValue)) {
-            setCardsArray(cards.filter(({name}) => {
-                let variable = name.toLowerCase().trim().replace(/ /g, '')
-                return variable.startsWith(searched)
-            }))
-        }
-    }, [searchedValue])
+    // useEffect(() => {
+    //     let searched = searchedValue.toLowerCase().trim().replace(/ /g, '')
+    //     // if (!searchedValue){
+    //     //     setCardsArray(GetUsers(loadedUsers).arr)
+    //     // }
+    //     if (/^[a-zA-Z1-9 ]+$/i.test(searchedValue)) {
+    //         setCardsArray(cards.filter(({name}) => {
+    //             let variable = name.toLowerCase().trim().replace(/ /g, '')
+    //             return variable.startsWith(searched)
+    //         }))
+    //     }
+    // }, [searchedValue , setCardsArray])
 
     // const handleSearch = () => {
     //     setCardsArray(cards.filter(card ))
@@ -56,7 +51,7 @@ const UpSide = ({cards}) => {
                     noWrap
                     sx={{ display: { xs: 'none', sm: 'block' , fontWeight: "700" } }}
                 >
-                    All organizations({cards.length})
+                    All organizations({totalCount ? totalCount : "..."})
                 </Typography>
                 <Search>
                     <SearchIconWrapper>

@@ -1,24 +1,29 @@
 import React, {useContext, useRef, useState} from 'react';
- import {Box, Button, FormControl, FormHelperText, Input, InputLabel, Typography} from "@mui/material";
-import context from "../../Context/context";
+import {Button, FormControl, FormHelperText, Input, InputLabel, Typography} from "@mui/material";
+import context from "../../../Context/context";
+import addOrganisation from "../../../Request/addOrganisation";
+import {getOrganisations} from "../../../Request/getOrganisations";
 
 const AddCard = ({setOpen}) => {
 
     const [newName , setNewName] = useState('')
 
-    const {setCardsArray, cardsArray} = useContext(context)
+    const {setCardsArray ,loadedUsersCount , setTotalCount} = useContext(context)
 
     const nameInput = useRef(null)
 
     const [focus , setFocus] = useState(false)
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (newName){
             let newOrganisation = {
                 id: (Math.random() * 10000).toFixed(),
-                name: newName
+                name: newName,
+
             }
-            setCardsArray([...cardsArray,newOrganisation])
+            await addOrganisation(newOrganisation)
+            // setCardsArray([...cardsArray,newOrganisation])
+            await getOrganisations(setCardsArray , loadedUsersCount ,setTotalCount )
             setNewName('')
             setOpen(false)
         } else {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Avatar, Card, CardHeader} from "@mui/material";
-import MyCardContent from "./MyCardContent";
+import MyCardContent from "../MyCardContent";
 
 const CardView = ({name}) => {
     return (

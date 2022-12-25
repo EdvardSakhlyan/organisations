@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Card} from "@mui/material"
-import MyCardHeader from "./MyCardHeader";
-import MyCardContent from "./MyCardContent";
-import BasicModal from "../BasicModal/BasicModal";
-import EditCard from "./EditCard";
-import CardView from "./CardView";
+import MyCardHeader from "../MyCardHeader";
+import MyCardContent from "../MyCardContent";
+import BasicModal from "../../BasicModal";
+import EditCard from "../EditCard";
+import CardView from "../CardView";
 
-const CardItem = ({name,id}) => {
+const CardItem = ({name,id , licenses : {tracking , protection}}) => {
 
     const [isOpenEdit , setOpenEdit] = useState(false)
 
@@ -20,7 +20,7 @@ const CardItem = ({name,id}) => {
                 setOpenEdit={setOpenEdit}
                 setOpenCard={setOpenCard}
             />
-            <MyCardContent/>
+            <MyCardContent tracking={tracking} protection={protection}/>
             <BasicModal setOpen={setOpenEdit} open={isOpenEdit}>
                 <EditCard name={name} setOpenEdit={setOpenEdit} id={id}/>
             </BasicModal>

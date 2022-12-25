@@ -1,6 +1,6 @@
 import React, {useContext, useRef, useState} from 'react';
 import {Button, FormControl, FormHelperText, Input, InputLabel, Typography} from "@mui/material";
-import context from "../../Context/context";
+import context from "../../../Context/context";
 
 const EditCard = ({name , setOpenEdit , id}) => {
 

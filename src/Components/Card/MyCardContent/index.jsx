@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, CardActions, CardContent, Tooltip, Typography} from "@mui/material";
 
-const MyCardContent = () => {
+const MyCardContent = ({tracking , protection}) => {
     return (
         <CardContent>
             <hr/>
@@ -18,7 +18,7 @@ const MyCardContent = () => {
                     >
                         <Box width={"100%"} display="flex" justifyContent={"space-between"}>
                             <Typography color="text.secondary" variant="subtitle1">In use:</Typography>
-                            <Typography color="red" variant="subtitle1">1245</Typography>
+                            <Typography color="red" variant="subtitle1">{tracking["in-use"]}</Typography>
                         </Box>
                     </Tooltip>
                     <Tooltip title="Internal 322 | External 855"
@@ -27,7 +27,7 @@ const MyCardContent = () => {
                     >
                         <Box width={"100%"} display="flex" justifyContent={"space-between"}>
                             <Typography color="text.secondary" variant="subtitle1">Assigned:</Typography>
-                            <Typography color="text.secondary" variant="subtitle1">1200</Typography>
+                            <Typography color="text.secondary" variant="subtitle1">{tracking["assigned"]}</Typography>
                         </Box>
                     </Tooltip>
                 </Box>
@@ -39,7 +39,7 @@ const MyCardContent = () => {
                     >
                         <Box width={"100%"} display="flex" justifyContent={"space-between"}>
                             <Typography color="text.secondary" variant="subtitle1">In use:</Typography>
-                            <Typography color="green" variant="subtitle1">300</Typography>
+                            <Typography color="green" variant="subtitle1">{protection["in-use"]}</Typography>
                         </Box>
                     </Tooltip>
                     <Tooltip title="Internal 700 | External 255"
@@ -48,7 +48,7 @@ const MyCardContent = () => {
                     >
                         <Box width={"100%"} display="flex" justifyContent={"space-between"}>
                             <Typography color="text.secondary" variant="subtitle1">Assigned:</Typography>
-                            <Typography color="text.secondary" variant="subtitle1">850</Typography>
+                            <Typography color="text.secondary" variant="subtitle1">{protection["assigned"]}</Typography>
                         </Box>
                     </Tooltip>
                 </Box>

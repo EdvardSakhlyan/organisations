@@ -1,0 +1,60 @@
+{
+  "cards": [
+    {
+      "id": 1000,
+      "name": "first organisation",
+      "licenses": {
+        "tracking": {
+          "in-use": 2000,
+          "assigned": 2200
+        },
+        "protection": {
+          "in-use": 3000,
+          "assigned": 3200
+        }
+      }
+    },
+    {
+      "id": 1001,
+      "name": "second organisation",
+      "licenses": {
+        "tracking": {
+          "in-use": 2000,
+          "assigned": 2200
+        },
+        "protection": {
+          "in-use": 3000,
+          "assigned": 3200
+        }
+      }
+    },
+    {
+      "id": 1002,
+      "name": "Semoi mot",
+      "licenses": {
+        "tracking": {
+          "in-use": 2220,
+          "assigned": 4500
+        },
+        "protection": {
+          "in-use": 6000,
+          "assigned": 1200
+        }
+      }
+    },
+    {
+      "id": 1003,
+      "name": "Artashnoc",
+      "licenses": {
+        "tracking": {
+          "in-use": 7220,
+          "assigned": 2300
+        },
+        "protection": {
+          "in-use": 6024,
+          "assigned": 2100
+        }
+      }
+    }
+  ]
+}
