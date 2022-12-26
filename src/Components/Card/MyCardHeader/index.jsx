@@ -4,14 +4,16 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import CallMissedOutgoingTwoToneIcon from "@mui/icons-material/CallMissedOutgoingTwoTone";
 import BlockTwoToneIcon from "@mui/icons-material/BlockTwoTone";
-import context from "../../Context/context";
+import context from "../../../Context/context";
+import {deleteOrganisation} from "../../../Request/deleteOrganisation";
+import {getOrganisations} from "../../../Request/getOrganisations";
 
 const MyCardHeader = ({name,id,setOpenEdit,setOpenCard}) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
 
-    const {cardsArray,setCardsArray} = useContext(context)
+    const {setCardsArray ,loadedUsersCount , setTotalCount} = useContext(context)
 
     const handleEdit = () => {
         setOpenEdit(true)
@@ -21,8 +23,10 @@ const MyCardHeader = ({name,id,setOpenEdit,setOpenCard}) => {
         setOpenCard(true)
     }
 
-    const handleDelete = (deletedId) => {
-        setCardsArray(cardsArray.filter(card => card.id !== deletedId))
+    const handleDelete = async (deletedId) => {
+        await deleteOrganisation(deletedId)
+        await getOrganisations(setCardsArray,loadedUsersCount,setTotalCount)
+        // setCardsArray(cardsArray.filter(card => card.id !== deletedId))
     }
 
     const MyOptions = [

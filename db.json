@@ -1,0 +1,116 @@
+{
+  "cards": [
+    {
+      "name": "first organisation",
+      "licenses": {
+        "tracking": {
+          "in-use": "2001",
+          "assigned": "2202"
+        },
+        "protection": {
+          "in-use": "3005",
+          "assigned": 3200
+        }
+      },
+      "id": 1000
+    },
+    {
+      "name": "second organisation",
+      "licenses": {
+        "tracking": {
+          "in-use": 2000,
+          "assigned": 2200
+        },
+        "protection": {
+          "in-use": 3000,
+          "assigned": "3220"
+        }
+      },
+      "id": 1001
+    },
+    {
+      "id": 1002,
+      "name": "Semoi mot",
+      "licenses": {
+        "tracking": {
+          "in-use": 2220,
+          "assigned": 4500
+        },
+        "protection": {
+          "in-use": 6000,
+          "assigned": 1200
+        }
+      }
+    },
+    {
+      "name": "Artashnoc",
+      "licenses": {
+        "tracking": {
+          "in-use": 7220,
+          "assigned": 2300
+        },
+        "protection": {
+          "in-use": 6024,
+          "assigned": 2100
+        }
+      },
+      "id": 1003
+    },
+    {
+      "name": "Microsoftd",
+      "licenses": {
+        "tracking": {
+          "in-use": 6920,
+          "assigned": 1300
+        },
+        "protection": {
+          "in-use": 8004,
+          "assigned": 1100
+        }
+      },
+      "id": 1004
+    },
+    {
+      "name": "New name",
+      "licenses": {
+        "tracking": {
+          "in-use": "1233",
+          "assigned": "8888"
+        },
+        "protection": {
+          "in-use": "3333",
+          "assigned": "6666"
+        }
+      },
+      "id": 1005
+    },
+    {
+      "name": "Google",
+      "licenses": {
+        "tracking": {
+          "in-use": "2233",
+          "assigned": "7988"
+        },
+        "protection": {
+          "in-use": "3322",
+          "assigned": "9066"
+        }
+      },
+      "id": 1006
+    },
+    {
+      "name": "Facebook",
+      "licenses": {
+        "tracking": {
+          "in-use": "2000",
+          "assigned": "2020"
+        },
+        "protection": {
+          "in-use": "1999",
+          "assigned": "1231"
+        }
+      },
+      "id": 1007
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+.assigned-input {
+  text-align: end;
+  outline: none;
+  width: 50px;
+  border: none;
+  margin-right: -17px;
+  color: #606060;
+  font-size: .9rem;
+  @media (max-width:1000px) {
+    font-size: 0.8rem
+  }
+  @media (max-width:900px) {
+    font-size: 0.7rem
+  }
+}
+
+.card-actions{
+  display: flex;
+  justify-content: space-between;
+
+  .card-actions-box{
+    width: 40%;
+
+    .card-actions-small-box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .spase-between {
+    justify-content: space-between;
+  }
+
+  .fw-600{
+    font-weight: 600;
+  }
+}
+

@@ -43,7 +43,6 @@ export const modalChildren = {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    height: "30%",
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
@@ -72,4 +71,6 @@ export const bigModalChildren = {
     alignItems: "center",
     justifyContent: "space-around"
 };
+
+export const toolTip = {tooltip: {sx: {backgroundColor: "#232323", fontSize: ".9vw"}}}
 

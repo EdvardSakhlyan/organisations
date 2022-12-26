@@ -1,0 +1,9 @@
+.add-new-box {
+  display: flex;
+  justify-content: end;
+  flex-grow: 1;
+
+  button {
+    text-transform: none;
+  }
+}
