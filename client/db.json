@@ -55,6 +55,34 @@
           "assigned": 2100
         }
       }
+    },
+    {
+      "id": 1004,
+      "name": "Microsoft",
+      "licenses": {
+        "tracking": {
+          "in-use": 6920,
+          "assigned": 1300
+        },
+        "protection": {
+          "in-use": 8004,
+          "assigned": 1100
+        }
+      }
+    },
+    {
+      "name": "New name",
+      "licenses": {
+        "tracking": {
+          "in-use": "1233",
+          "assigned": "8888"
+        },
+        "protection": {
+          "in-use": "3333",
+          "assigned": "6666"
+        }
+      },
+      "id": 1005
     }
   ]
 }
