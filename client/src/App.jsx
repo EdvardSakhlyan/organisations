@@ -13,6 +13,7 @@ import UpSide from "./Components/UpSide";
 import {Box, Button, Container, ThemeProvider} from "@mui/material";
 import defaultTheme from "./MUI/theme";
 import Dashboard from "./Components/Dashboard";
+import axios from "axios";
 // import getOrganisations from "./Request/getOrganisations";
 
 function App() {
@@ -52,6 +53,15 @@ function App() {
         setCardsArray,
         setTotalCount
     }
+
+    useEffect(() => {
+        const request = async () => {
+            const response = axios.get("http://localhost:8080/")
+            console.log(response)
+        }
+
+        request().catch((e) => console.log(e))
+    })
 
 
     return (
