@@ -14,6 +14,7 @@ import {Box, Button, Container, ThemeProvider} from "@mui/material";
 import defaultTheme from "./MUI/theme";
 import Dashboard from "./Components/Dashboard";
 import axios from "axios";
+import {searchOrganisations} from "./Request/searchOrganisation";
 // import getOrganisations from "./Request/getOrganisations";
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
     const [cardsArray, setCardsArray] = useState([])
 
     const [totalCount , setTotalCount] = useState(0)
+
+    const [searched,setSearched] = useState([])
 
     // const loadUsers = () => setLoadedUsers(loadedUsers + 1)
     // if (getOrganisations["pending"]){
@@ -55,12 +58,12 @@ function App() {
     }
 
     useEffect(() => {
-        const request = async () => {
-            const response = axios.get("http://localhost:8080/")
-            console.log(response)
+        try {
+            searchOrganisations(setSearched,"new",setTotalCount)
+        }catch (e){
+            console.log(e)
         }
 
-        request().catch((e) => console.log(e))
     })
 
 

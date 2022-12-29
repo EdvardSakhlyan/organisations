@@ -6,7 +6,7 @@ import BasicModal from "../../BasicModal";
 import EditCard from "../EditCard";
 import CardView from "../CardView";
 
-const CardItem = ({name,id , licenses : {tracking , protection}}) => {
+const CardItem = ({name,id,tracking_in_use,tracking_assigned,protection_in_use,protection_assigned}) => {
 
     const [isOpenEdit , setOpenEdit] = useState(false)
 
@@ -20,7 +20,12 @@ const CardItem = ({name,id , licenses : {tracking , protection}}) => {
                 setOpenEdit={setOpenEdit}
                 setOpenCard={setOpenCard}
             />
-            <MyCardContent tracking={tracking} protection={protection}/>
+            <MyCardContent
+                tracking_in_use={tracking_in_use}
+                tracking_assigned={tracking_assigned}
+                protection_in_use={protection_in_use}
+                protection_assigned={protection_assigned}
+            />
             <BasicModal setOpen={setOpenEdit} open={isOpenEdit}>
                 <EditCard name={name} setOpenEdit={setOpenEdit} id={id}/>
             </BasicModal>

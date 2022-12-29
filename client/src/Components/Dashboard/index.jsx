@@ -14,7 +14,14 @@ const  Dashboard = () => {
                 cardsArray.map((card) => {
                     return (
                         <Grid item xs={12} sm={6} md={4} key={card.id}>
-                            <CardItem name={card.name} id={card.id} licenses={card.licenses}/>
+                            <CardItem
+                                name={card.name}
+                                id={card.id}
+                                tracking_in_use={card.tracking_in_use}
+                                tracking_assigned={card.tracking_assigned}
+                                protection_in_use={card.protection_in_use}
+                                protection_assigned={card.protection_assigned}
+                            />
                         </Grid>
                     )
                 })

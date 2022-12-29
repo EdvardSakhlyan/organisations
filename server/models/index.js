@@ -1,5 +1,5 @@
 const {DB, USER, PASSWORD, HOST, dialect , pool } = require("../config/db.config").module;
-const {Sequelize , DataTypes} = require("sequelize");
+const {Sequelize} = require("sequelize");
 
 const sequelize = new Sequelize(
     DB,

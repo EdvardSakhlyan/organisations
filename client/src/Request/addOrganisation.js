@@ -1,13 +1,7 @@
 import axios from "axios";
 
 const addOrganisation = async (organisation) => {
-    const response = await axios.post(`http://localhost:4000/cards` , organisation , {
-        transformResponse: [function (data) {
-            // Делайте все, что хотите, чтобы преобразовать данные
-            console.log(data)
-            return data;
-        }],
-    });
+    const response = await axios.post(`http://localhost:8080/api/organisations/add` , organisation );
     console.log(response);
 }
 

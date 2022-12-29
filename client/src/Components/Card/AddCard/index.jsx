@@ -23,18 +23,11 @@ const AddCard = ({setOpen}) => {
         if (name && trackingInUse && trackingAssigned && protectionInUse && protectionAssigned) {
 
             const newOrganisation = {
-                "name": name,
-                "licenses": {
-                    "tracking": {
-                        "in-use": trackingInUse,
-                        "assigned": trackingAssigned
-                    },
-                    "protection": {
-                        "in-use": protectionInUse,
-                        "assigned": protectionAssigned
-                    }
-
-                }
+                name: name,
+                tracking_in_use : trackingInUse	,
+                tracking_assigned : trackingAssigned,
+                protection_in_use : protectionInUse,
+                protection_assigned : protectionAssigned
             }
 
             await addOrganisation(newOrganisation)
