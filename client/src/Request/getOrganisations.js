@@ -1,16 +1,15 @@
 import axios from "axios";
 
 
-export const getOrganisations = async (setState , count , setTotalCount) => {
-    const response = await axios.get(`http://localhost:8080/api/organisations/all?limit=${count}`);
-    const {data , headers} = await response;
-    console.log(headers)
+export const getOrganisations = async (setState , organisationsCount , setTotalCount) => {
+    const response = await axios.get(`http://localhost:8080/api/organisations/all?limit=${organisationsCount}`);
+    const {data : {organisations , count}} = await response;
     if (typeof setTotalCount === "function"){
-        setTotalCount(headers["x-total-count"])
+        setTotalCount(count)
     }
 
     if (typeof setState === "function"){
-        setState(data)
+        setState(organisations)
     }
 }
 

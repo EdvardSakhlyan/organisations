@@ -72,3 +72,5 @@ export const bigModalChildren = {
     justifyContent: "space-around"
 };
 
+export const tooltip = {sx: {backgroundColor: "#232323", fontSize: ".9vw"}}
+

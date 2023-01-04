@@ -28,14 +28,15 @@ const addOrganisation = async (req,res) => {
 //2. get all organisations
 
 const getOrganisations = async (req,res) => {
-
     let limit = req.query.limit
+
+    const count = await Organisation.count();
 
     let organisations = await Organisation.findAll({
         order: [['id', 'DESC']],
         limit : Number(limit)
     })
-    res.status(200).send(organisations)
+    res.status(200).send({organisations,count})
 }
 
 //3. get single organisation
@@ -73,9 +74,8 @@ const deleteOrganisation = async (req,res) => {
 //6. find organisation
 
 const searchOrganisation = async (req,res) => {
-
     let name = req.query.name
-    console.log(true)
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     let organisations = await Organisation.findAll({
         order: [['id', 'DESC']],
         // where: {
@@ -84,11 +84,15 @@ const searchOrganisation = async (req,res) => {
         //     }
         // }
         where: {
+            // name: {
+            //     $iLike: '%'+ name
+            // }
             name: {
-                $iLike: '%'+ name
+                [Op.like]: name + "%"
             }
         }
     })
+    console.log(organisations)
 
     res.status(200).send(organisations)
 }

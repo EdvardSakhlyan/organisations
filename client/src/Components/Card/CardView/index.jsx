@@ -6,7 +6,7 @@ const CardView = ({name}) => {
     return (
         <Card sx={{width: "100%", height: "100%"}}>
             <CardHeader
-                avatar={<Avatar aria-label="recipe">R</Avatar>}
+                avatar={<Avatar aria-label="recipe">{name.charAt(0)}</Avatar>}
                 titleTypographyProps={{variant:'body1' , fontWeight: "700"}}
                 title={name}
             />

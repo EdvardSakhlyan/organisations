@@ -3,15 +3,15 @@ import {Box, Button, FormHelperText, Input, InputLabel, Typography} from "@mui/m
 import context from "../../../Context/context";
 import addOrganisation from "../../../Request/addOrganisation";
 import {getOrganisations} from "../../../Request/getOrganisations";
-import './AddCard.scss'
+import './AddOrEditCard.scss'
 
-const AddCard = ({setOpen}) => {
+const AddOrEditCard = ({setOpen , name , id , setOpenEdit , isEdit , protection_in_use , protection_assigned , tracking_in_use , tracking_assigned}) => {
 
-    const [name , setName] = useState('')
-    const [trackingInUse , setTrackingInUse] = useState(0)
-    const [trackingAssigned , setTrackingAssigned] = useState(0)
-    const [protectionInUse , setProtectionInUse] = useState(0)
-    const [protectionAssigned , setProtectionAssigned] = useState(0)
+    const [newName , setNewName] = useState(isEdit ? name : '')
+    const [trackingInUse , setTrackingInUse] = useState(isEdit ? tracking_in_use : 0)
+    const [trackingAssigned , setTrackingAssigned] = useState(isEdit ? tracking_assigned : 0)
+    const [protectionInUse , setProtectionInUse] = useState(isEdit ? protection_in_use : 0)
+    const [protectionAssigned , setProtectionAssigned] = useState(isEdit ? protection_assigned : 0)
 
     const {setCardsArray ,loadedUsersCount , setTotalCount} = useContext(context)
 
@@ -20,19 +20,22 @@ const AddCard = ({setOpen}) => {
     const [focus , setFocus] = useState(false)
 
     const handleSubmit = async () => {
-        if (name && trackingInUse && trackingAssigned && protectionInUse && protectionAssigned) {
+        if (newName && trackingInUse && trackingAssigned && protectionInUse && protectionAssigned) {
 
             const newOrganisation = {
-                name: name,
+                name: newName,
                 tracking_in_use : trackingInUse	,
                 tracking_assigned : trackingAssigned,
                 protection_in_use : protectionInUse,
                 protection_assigned : protectionAssigned
             }
+            if (isEdit) {
 
-            await addOrganisation(newOrganisation)
+            }else {
+                await addOrganisation(newOrganisation)
+            }
             await getOrganisations(setCardsArray , loadedUsersCount ,setTotalCount )
-            setName('');
+            setNewName('');
             setProtectionAssigned(0);
             setTrackingAssigned(0)
             setTrackingInUse(0)
@@ -49,12 +52,12 @@ const AddCard = ({setOpen}) => {
 
     return (
         <Box className="add-card-body">
-            <Typography variant="h5">Add new organisation</Typography>
+            <Typography variant="h5">{isEdit ? "Edit organisation" : "Add new organisation"}</Typography>
             <InputLabel htmlFor="my-input">Organisation name</InputLabel>
             <Input
                 id="my-input"
-                value={name}
-                onChange={(event) => handleChange(event , setName)}
+                value={newName}
+                onChange={(event) => handleChange(event , setNewName)}
                 ref={nameInput}
                 aria-describedby="my-helper-text"
             />
@@ -65,11 +68,13 @@ const AddCard = ({setOpen}) => {
                 <Input
                     id="tracking-in-use"
                     type="number"
+                    value={trackingInUse}
                     onChange={(event) => handleChange(event , setTrackingInUse)}/>
                 <InputLabel htmlFor="tracking-in-use">Assigned</InputLabel>
                 <Input
                     id="tracking-assigned"
                     type="number"
+                    value={trackingAssigned}
                     onChange={(event) => handleChange(event , setTrackingAssigned)}/>
             </Box>
             <Box className="add-card-box">
@@ -78,19 +83,21 @@ const AddCard = ({setOpen}) => {
                 <Input
                     id="protection-in-use"
                     type="number"
+                    value={protectionInUse}
                     onChange={(event) => handleChange(event , setProtectionInUse)}
                 />
                 <InputLabel htmlFor="protection-in-use">Assigned</InputLabel>
                 <Input
                     id="protection-assigned"
                     type="number"
+                    value={protectionAssigned}
                     onChange={(event) => handleChange(event , setProtectionAssigned)}
                 />
             </Box>
-            <Button variant="outlined" type="submit" onClick={handleSubmit}>Add</Button>
+            <Button variant="outlined" sx={{marginTop: "20px"}} type="submit" onClick={handleSubmit}>{isEdit ? "Edit" : "Add"}</Button>
             <FormHelperText id="my-helper-text">{focus && "You need fill in all fields"}</FormHelperText>
         </Box>
     );
 };
 
-export default AddCard;
+export default AddOrEditCard;

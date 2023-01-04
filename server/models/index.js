@@ -15,7 +15,7 @@ const sequelize = new Sequelize(
 
 sequelize.authenticate()
     .then(() => console.log("connected..."))
-    .catch(err => console.log(err.message || "connect faild"))
+    .catch(err => console.log(err.message || "connect failed"))
 
 const db = {}
 db.Sequelize = Sequelize

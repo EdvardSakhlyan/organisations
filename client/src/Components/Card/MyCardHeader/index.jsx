@@ -59,7 +59,7 @@ const MyCardHeader = ({name,id,setOpenEdit,setOpenCard}) => {
 
     return (
         <CardHeader
-            avatar={<Avatar aria-label="recipe">R</Avatar>}
+            avatar={<Avatar aria-label="recipe">{name.charAt(0)}</Avatar>}
             action={
                 <IconButton aria-label="settings" onClick={handleClick} aria-haspopup="true">
                     <MoreVertIcon />

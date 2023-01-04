@@ -17,17 +17,15 @@ app.use(express.urlencoded({extended: true}));
 
 //routes
 
-console.log("before router")
-
 const router = require("./routes/organisation.routes")
 
 app.use("/api/organisations/" , router)
 
 //testing api
 
-app.get("/", (req, res) => {
-    res.json({massage: "hello word"})
-})
+// app.get("/", (req, res) => {
+//     res.json({massage: "hello word"})
+// })
 
 //port
 
