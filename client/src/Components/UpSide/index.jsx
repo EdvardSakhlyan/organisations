@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {AppBar, Box, Button, Toolbar, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {Search, SearchIconWrapper, StyledInputBase, toolbarTypography} from "../../MUI/styledComponents"
@@ -15,11 +15,19 @@ const UpSide = ({totalCount}) => {
 
     const [open, setOpen] = React.useState(false);
 
+    const inputRef = useRef()
+
     const [searchedValue , setSearchedValue] = useState('')
 
     const handleOpen = () => setOpen(true);
 
-    const handleSearch = ({target:{value}}) => setSearchedValue(value)
+    const handleSearch = ({target:{value}}) => {
+        if(/^[a-zA-Z1-9 ]+$/i.test(value) || !value){
+            setSearchedValue(value)
+        }else{
+            inputRef.current.value = searchedValue
+        }
+    }
 
     useEffect(() => {
         searchOrganisations(setCardsArray, searchedValue.trim(), loadedUsersCount, setTotalCount).catch(e => console.log(e))
@@ -43,6 +51,8 @@ const UpSide = ({totalCount}) => {
                         inputProps={{
                             'aria-label': 'search',
                             onChange:debouncedChangeHandler,
+                            // value:searchedValue,
+                            ref:inputRef,
                             className: "search-organisation-input"
                         }}/>
                 </Search>
