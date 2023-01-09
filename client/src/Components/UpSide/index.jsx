@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {AppBar, Box, Button, Toolbar, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {Search, SearchIconWrapper, StyledInputBase, toolbarTypography} from "../../MUI/styledComponents"
@@ -6,8 +6,8 @@ import BasicModal from "../BasicModal";
 import {searchOrganisations} from "../../Request/searchOrganisation";
 import context from "../../Context/context";
 import AddOrEditCard from "../Card/AddOrEditCard";
-import debounce from "lodash.debounce";
 import "./UpSide.scss"
+import debounce from "lodash.debounce"
 
 const UpSide = ({totalCount}) => {
 
@@ -19,23 +19,14 @@ const UpSide = ({totalCount}) => {
 
     const handleOpen = () => setOpen(true);
 
+    const handleSearch = ({target:{value}}) => setSearchedValue(value)
+
+    useEffect(() => {
+        searchOrganisations(setCardsArray, searchedValue.trim(), loadedUsersCount, setTotalCount).catch(e => console.log(e))
+    },[searchedValue])
 
 
-    function handleSearch({target: {value}}) {
-        if(/^[a-zA-Z1-9 ]+$/i.test(value) || value === "") {
-            setSearchedValue(value);
-            searchOrganisations(setCardsArray, value.trim(), loadedUsersCount, setTotalCount)
-                .catch(e => console.log(e))
-        } else {
-            let textArr = value.split('')
-            let filteredTextArr = textArr.filter(str => str.match(/^[a-zA-Z1-9 ]+$/i))
-            setSearchedValue(filteredTextArr.join(''));
-        }
-    }
-
-    const debouncedChangeHandler = useCallback(
-        debounce(handleSearch, 300)
-        , []);
+    const debouncedChangeHandler = debounce(handleSearch, 300)
 
     return (
         <AppBar position="static" color={"inherit"} variant={"outlined"} elevation={0}>
@@ -51,8 +42,7 @@ const UpSide = ({totalCount}) => {
                         placeholder="Search organization"
                         inputProps={{
                             'aria-label': 'search',
-                            // value: searchedValue,
-                            onChange: debouncedChangeHandler,
+                            onChange:debouncedChangeHandler,
                             className: "search-organisation-input"
                         }}/>
                 </Search>
