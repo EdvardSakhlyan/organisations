@@ -75,24 +75,14 @@ const deleteOrganisation = async (req,res) => {
 
 const searchOrganisation = async (req,res) => {
     let name = req.query.name
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     let organisations = await Organisation.findAll({
         order: [['id', 'DESC']],
-        // where: {
-        //     someAttribute: {
-        //         [Op.startsWith]: 'Fir',
-        //     }
-        // }
         where: {
-            // name: {
-            //     $iLike: '%'+ name
-            // }
             name: {
                 [Op.like]: name + "%"
             }
         }
     })
-    console.log(organisations)
 
     res.status(200).send(organisations)
 }

@@ -1,11 +1,12 @@
-import React, {useContext, useState} from 'react';
-import {AppBar, Box, Button,Toolbar, Typography} from "@mui/material";
+import React, {useCallback, useContext, useState} from 'react';
+import {AppBar, Box, Button, Toolbar, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {Search, SearchIconWrapper, StyledInputBase, toolbarTypography} from "../../MUI/styledComponents"
 import BasicModal from "../BasicModal";
 import {searchOrganisations} from "../../Request/searchOrganisation";
 import context from "../../Context/context";
 import AddOrEditCard from "../Card/AddOrEditCard";
+import debounce from "lodash.debounce";
 import "./UpSide.scss"
 
 const UpSide = ({totalCount}) => {
@@ -18,6 +19,8 @@ const UpSide = ({totalCount}) => {
 
     const handleOpen = () => setOpen(true);
 
+
+
     function handleSearch({target: {value}}) {
         if(/^[a-zA-Z1-9 ]+$/i.test(value) || value === "") {
             setSearchedValue(value);
@@ -29,6 +32,10 @@ const UpSide = ({totalCount}) => {
             setSearchedValue(filteredTextArr.join(''));
         }
     }
+
+    const debouncedChangeHandler = useCallback(
+        debounce(handleSearch, 300)
+        , []);
 
     return (
         <AppBar position="static" color={"inherit"} variant={"outlined"} elevation={0}>
@@ -44,8 +51,8 @@ const UpSide = ({totalCount}) => {
                         placeholder="Search organization"
                         inputProps={{
                             'aria-label': 'search',
-                            value: searchedValue,
-                            onChange: handleSearch,
+                            // value: searchedValue,
+                            onChange: debouncedChangeHandler,
                             className: "search-organisation-input"
                         }}/>
                 </Search>
