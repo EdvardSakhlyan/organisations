@@ -1,40 +1,50 @@
 import React, {useContext, useRef, useState} from 'react';
 import {Box, Button, FormHelperText, Input, InputLabel, Typography} from "@mui/material";
-import context from "../../../Context/context";
+import context, {UnitContext} from "../../../Context/context";
 import addOrganisation from "../../../Request/addOrganisation";
 import {getOrganisations} from "../../../Request/getOrganisations";
 import './AddOrEditCard.scss'
+import {updateOrganisation} from "../../../Request/updateOrganisation";
 
-const AddOrEditCard = ({setOpen , name , id , setOpenEdit , isEdit , protection_in_use , protection_assigned , tracking_in_use , tracking_assigned}) => {
+const AddOrEditCard = ({setOpen, isEdit}) => {
 
-    const [newName , setNewName] = useState(isEdit ? name : '')
-    const [trackingInUse , setTrackingInUse] = useState(isEdit ? tracking_in_use : 0)
-    const [trackingAssigned , setTrackingAssigned] = useState(isEdit ? tracking_assigned : 0)
-    const [protectionInUse , setProtectionInUse] = useState(isEdit ? protection_in_use : 0)
-    const [protectionAssigned , setProtectionAssigned] = useState(isEdit ? protection_assigned : 0)
+    const {
+        name,
+        id,
+        tracking_in_use,
+        tracking_assigned,
+        protection_in_use,
+        protection_assigned
+    } = useContext(UnitContext)
 
-    const {setCardsArray ,loadedUsersCount , setTotalCount} = useContext(context)
+    const [newName, setNewName] = useState(isEdit ? name : '')
+    const [trackingInUse, setTrackingInUse] = useState(isEdit ? tracking_in_use : 0)
+    const [trackingAssigned, setTrackingAssigned] = useState(isEdit ? tracking_assigned : 0)
+    const [protectionInUse, setProtectionInUse] = useState(isEdit ? protection_in_use : 0)
+    const [protectionAssigned, setProtectionAssigned] = useState(isEdit ? protection_assigned : 0)
+
+    const {setCardsArray, loadedUsersCount, setTotalCount} = useContext(context)
 
     const nameInput = useRef(null)
 
-    const [focus , setFocus] = useState(false)
+    const [focus, setFocus] = useState(false)
 
     const handleSubmit = async () => {
         if (newName && trackingInUse && trackingAssigned && protectionInUse && protectionAssigned) {
 
             const newOrganisation = {
                 name: newName,
-                tracking_in_use : trackingInUse	,
-                tracking_assigned : trackingAssigned,
-                protection_in_use : protectionInUse,
-                protection_assigned : protectionAssigned
+                tracking_in_use: trackingInUse,
+                tracking_assigned: trackingAssigned,
+                protection_in_use: protectionInUse,
+                protection_assigned: protectionAssigned
             }
             if (isEdit) {
-
-            }else {
+                await updateOrganisation(id, newOrganisation)
+            } else {
                 await addOrganisation(newOrganisation)
             }
-            await getOrganisations(setCardsArray , loadedUsersCount ,setTotalCount )
+            await getOrganisations(setCardsArray, loadedUsersCount, setTotalCount)
             setNewName('');
             setProtectionAssigned(0);
             setTrackingAssigned(0)
@@ -46,7 +56,7 @@ const AddOrEditCard = ({setOpen , name , id , setOpenEdit , isEdit , protection_
         }
     }
 
-    const handleChange = ({target : {value}} , setState) => {
+    const handleChange = ({target: {value}}, setState) => {
         setState(value)
     }
 
@@ -57,7 +67,7 @@ const AddOrEditCard = ({setOpen , name , id , setOpenEdit , isEdit , protection_
             <Input
                 id="my-input"
                 value={newName}
-                onChange={(event) => handleChange(event , setNewName)}
+                onChange={(event) => handleChange(event, setNewName)}
                 ref={nameInput}
                 aria-describedby="my-helper-text"
             />
@@ -69,13 +79,13 @@ const AddOrEditCard = ({setOpen , name , id , setOpenEdit , isEdit , protection_
                     id="tracking-in-use"
                     type="number"
                     value={trackingInUse}
-                    onChange={(event) => handleChange(event , setTrackingInUse)}/>
+                    onChange={(event) => handleChange(event, setTrackingInUse)}/>
                 <InputLabel htmlFor="tracking-in-use">Assigned</InputLabel>
                 <Input
                     id="tracking-assigned"
                     type="number"
                     value={trackingAssigned}
-                    onChange={(event) => handleChange(event , setTrackingAssigned)}/>
+                    onChange={(event) => handleChange(event, setTrackingAssigned)}/>
             </Box>
             <Box className="add-card-box">
                 <Typography variant="body2">Protection</Typography>
@@ -84,17 +94,24 @@ const AddOrEditCard = ({setOpen , name , id , setOpenEdit , isEdit , protection_
                     id="protection-in-use"
                     type="number"
                     value={protectionInUse}
-                    onChange={(event) => handleChange(event , setProtectionInUse)}
+                    onChange={(event) => handleChange(event, setProtectionInUse)}
                 />
                 <InputLabel htmlFor="protection-in-use">Assigned</InputLabel>
                 <Input
                     id="protection-assigned"
                     type="number"
                     value={protectionAssigned}
-                    onChange={(event) => handleChange(event , setProtectionAssigned)}
+                    onChange={(event) => handleChange(event, setProtectionAssigned)}
                 />
             </Box>
-            <Button variant="outlined" sx={{marginTop: "20px"}} type="submit" onClick={handleSubmit}>{isEdit ? "Edit" : "Add"}</Button>
+            <Button
+                variant="outlined"
+                sx={{marginTop: "20px"}}
+                type="submit"
+                onClick={handleSubmit}
+            >
+                {isEdit ? "Save" : "Add"}
+            </Button>
             <FormHelperText id="my-helper-text">{focus && "You need fill in all fields"}</FormHelperText>
         </Box>
     );

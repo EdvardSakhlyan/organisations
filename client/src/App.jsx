@@ -33,7 +33,7 @@ function App() {
                 <ThemeProvider theme={defaultTheme}>
                     <UpSide totalCount={totalCount}/>
                     <Dashboard/>
-                    <Box display="flex" justifyContent="center" alignItems="center" height={"10vh"}>
+                    <Box className="load-more-box">
                         {
                             totalCount > loadedUsersCount &&
                             <Button

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Avatar, Card, CardHeader} from "@mui/material";
 import MyCardContent from "../MyCardContent";
+import "./CardView.scss"
+import {titleTypographyProps} from "../../../MUI/styledComponents";
+import {UnitContext} from "../../../Context/context";
 
-const CardView = ({name}) => {
+const CardView = () => {
+
+    const {name} = useContext(UnitContext)
+
     return (
-        <Card sx={{width: "100%", height: "100%"}}>
+        <Card className="card-view" >
             <CardHeader
                 avatar={<Avatar aria-label="recipe">{name.charAt(0)}</Avatar>}
-                titleTypographyProps={{variant:'body1' , fontWeight: "700"}}
+                titleTypographyProps={titleTypographyProps}
                 title={name}
             />
             <MyCardContent/>

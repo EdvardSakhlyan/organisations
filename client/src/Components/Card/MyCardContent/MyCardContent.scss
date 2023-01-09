@@ -1,0 +1,50 @@
+.cards-actions {
+  display: flex;
+  justify-content: space-between;
+  >div {
+    width: 40%;
+  }
+  .card-info-box {
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+      opacity: 1;
+    }
+
+    .assignedInput {
+      outline: none;
+      border: none;
+      color: #787878;
+      text-align: end;
+      width: 50%;
+      margin-right: -18px;
+
+      @media (max-width:1000px){
+        font-size: 0.8rem;
+      }
+
+      @media (max-width:900px){
+        font-size: 0.7rem;
+      }
+    }
+
+    .assignedInputMobile {
+      outline: none;
+      border: none;
+      color: #787878;
+      text-align: end;
+      width: 50%;
+      @media (max-width:1000px){
+        font-size: 0.8rem;
+      }
+
+      @media (max-width:900px){
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+

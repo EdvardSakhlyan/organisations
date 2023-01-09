@@ -1,0 +1,25 @@
+.toolbar{
+  .search-organisation{
+    flex-grow: 5;
+    .search-organisation-input{
+      width: 100%;
+    }
+    div:nth-child(2){
+      width: 100%;
+    }
+  }
+
+  p {
+    flex-grow: 1;
+  }
+
+  .toolbar-box {
+    display: flex;
+    justify-content: end;
+    flex-grow : 1;
+    button {
+      min-width: 150px;
+    }
+  }
+}
+

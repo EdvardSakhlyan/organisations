@@ -20,3 +20,6 @@ hr{
   font-weight: 600;
 }
 
+.text-transform-none{
+  text-transform: none;
+}

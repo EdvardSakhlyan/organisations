@@ -1,17 +1,18 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {Box, CardActions, CardContent, Tooltip, Typography} from "@mui/material";
 import {tooltip} from "../../../MUI/styledComponents";
-import "../AddOrEditCard/AddOrEditCard.scss"
+import "./MyCardContent.scss"
+import {isMobile} from 'react-device-detect';
+import {UnitContext} from "../../../Context/context";
 
-const MyCardContent = ({tracking_in_use,tracking_assigned,protection_in_use,protection_assigned}) => {
+const MyCardContent = () => {
 
-    const changeProtectionAssigned = ({target: {value}}) => {
-        console.log(value)
-    }
+    const {tracking_in_use, tracking_assigned, protection_in_use, protection_assigned} = useContext(UnitContext)
 
-    const changeTrackingAssigned = ({target: {value}}) => {
-        console.log(value)
-    }
+    const [trackingAssigned, setTrackingAssigned] = useState(tracking_assigned)
+    const [protectionAssigned, setProtectionAssigned] = useState(protection_assigned)
+
+    const handleChange = ({target : {value}} , setState) => setState(value)
 
     return (
         <CardContent>
@@ -29,7 +30,11 @@ const MyCardContent = ({tracking_in_use,tracking_assigned,protection_in_use,prot
                     <Tooltip title="Internal 322 | External 855" placement="top" componentsProps={{tooltip}}>
                         <Box className="card-info-box">
                             <Typography color="text.secondary" variant="subtitle1">Assigned:</Typography>
-                            <input type="number" value={tracking_assigned} onChange={changeTrackingAssigned}/>
+                            <input
+                                className={isMobile ? "assignedInputMobile" : "assignedInput"}
+                                type="number"
+                                defaultValue={trackingAssigned}
+                                onChange={(event) => handleChange(event,setTrackingAssigned)}/>
                         </Box>
                     </Tooltip>
                 </Box>
@@ -44,7 +49,11 @@ const MyCardContent = ({tracking_in_use,tracking_assigned,protection_in_use,prot
                     <Tooltip title="Internal 700 | External 255" placement="top" componentsProps={{tooltip}}>
                         <Box className="card-info-box">
                             <Typography color="text.secondary" variant="subtitle1">Assigned:</Typography>
-                            <input type="number" value={protection_assigned} onChange={changeProtectionAssigned}/>
+                            <input
+                                className={isMobile ? "assignedInputMobile" : "assignedInput"}
+                                type="number"
+                                defaultValue={protectionAssigned}
+                                onChange={(event) => handleChange(event,setProtectionAssigned)}/>
                         </Box>
                     </Tooltip>
                 </Box>

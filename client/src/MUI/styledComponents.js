@@ -74,3 +74,7 @@ export const bigModalChildren = {
 
 export const tooltip = {sx: {backgroundColor: "#232323", fontSize: ".9vw"}}
 
+export const titleTypographyProps = {variant:'body1' , fontWeight: "700"}
+
+export const toolbarTypography = {display: {xs: 'none', sm: 'block', fontWeight: "700"}}
+

@@ -4,19 +4,25 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import CallMissedOutgoingTwoToneIcon from "@mui/icons-material/CallMissedOutgoingTwoTone";
 import BlockTwoToneIcon from "@mui/icons-material/BlockTwoTone";
-import context from "../../../Context/context";
+import context, {UnitContext} from "../../../Context/context";
 import {deleteOrganisation} from "../../../Request/deleteOrganisation";
 import {getOrganisations} from "../../../Request/getOrganisations";
+import {titleTypographyProps} from "../../../MUI/styledComponents";
 
-const MyCardHeader = ({name,id,setOpenEdit,setOpenCard}) => {
+const MyCardHeader = ({setOpenEit,setOpenCard}) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
 
     const {setCardsArray ,loadedUsersCount , setTotalCount} = useContext(context)
 
+    const {
+        name,
+        id,
+    } = useContext(UnitContext)
+
     const handleEdit = () => {
-        setOpenEdit(true)
+        setOpenEit(true)
     }
 
     const handleGoTo = () => {
@@ -84,7 +90,7 @@ const MyCardHeader = ({name,id,setOpenEdit,setOpenCard}) => {
                     </Menu>
                 </IconButton>
             }
-            titleTypographyProps={{variant:'body1' , fontWeight: "700"}}
+            titleTypographyProps={titleTypographyProps}
             title={name}
         />
     );
