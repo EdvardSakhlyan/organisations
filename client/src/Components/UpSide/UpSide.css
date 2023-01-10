@@ -1,0 +1,22 @@
+.toolbar .search-organisation {
+  flex-grow: 5;
+}
+.toolbar .search-organisation .search-organisation-input {
+  width: 100%;
+}
+.toolbar .search-organisation div:nth-child(2) {
+  width: 100%;
+}
+.toolbar p {
+  flex-grow: 1;
+}
+.toolbar .toolbar-box {
+  display: flex;
+  justify-content: end;
+  flex-grow: 1;
+}
+.toolbar .toolbar-box button {
+  min-width: 150px;
+}
+
+/*# sourceMappingURL=UpSide.css.map */

@@ -1,0 +1,53 @@
+.cards-actions {
+  display: flex;
+  justify-content: space-between;
+}
+.cards-actions > div {
+  width: 40%;
+}
+.cards-actions .card-info-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.cards-actions .card-info-box input::-webkit-inner-spin-button,
+.cards-actions .card-info-box input::-webkit-outer-spin-button {
+  opacity: 1;
+}
+.cards-actions .card-info-box .assignedInput {
+  outline: none;
+  border: none;
+  color: #787878;
+  text-align: end;
+  width: 50%;
+  margin-right: -18px;
+}
+@media (max-width: 1000px) {
+  .cards-actions .card-info-box .assignedInput {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 900px) {
+  .cards-actions .card-info-box .assignedInput {
+    font-size: 0.7rem;
+  }
+}
+.cards-actions .card-info-box .assignedInputMobile {
+  outline: none;
+  border: none;
+  color: #787878;
+  text-align: end;
+  width: 50%;
+}
+@media (max-width: 1000px) {
+  .cards-actions .card-info-box .assignedInputMobile {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 900px) {
+  .cards-actions .card-info-box .assignedInputMobile {
+    font-size: 0.7rem;
+  }
+}
+
+/*# sourceMappingURL=MyCardContent.css.map */
