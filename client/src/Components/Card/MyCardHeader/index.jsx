@@ -4,16 +4,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DriveFileRenameOutlineTwoToneIcon from "@mui/icons-material/DriveFileRenameOutlineTwoTone";
 import CallMissedOutgoingTwoToneIcon from "@mui/icons-material/CallMissedOutgoingTwoTone";
 import BlockTwoToneIcon from "@mui/icons-material/BlockTwoTone";
-<<<<<<<< HEAD:client/src/Components/Card/MyCardHeader/MyCardHeader/index.jsx
-import context from "../../../Context/context";
 import {deleteOrganisation} from "../../../Request/deleteOrganisation";
 import {getOrganisations} from "../../../Request/getOrganisations";
-========
 import context, {UnitContext} from "../../../Context/context";
-import {deleteOrganisation} from "../../../Request/deleteOrganisation";
-import {getOrganisations} from "../../../Request/getOrganisations";
 import {titleTypographyProps} from "../../../MUI/styledComponents";
->>>>>>>> origin/master:client/src/Components/Card/MyCardHeader/index.jsx
+
 
 const MyCardHeader = ({setOpenEit,setOpenCard}) => {
 
@@ -21,14 +16,13 @@ const MyCardHeader = ({setOpenEit,setOpenCard}) => {
     const [open, setOpen] = React.useState(false);
 
     const {setCardsArray ,loadedUsersCount , setTotalCount} = useContext(context)
-<<<<<<<< HEAD:client/src/Components/Card/MyCardHeader/MyCardHeader/index.jsx
-========
+
 
     const {
         name,
         id,
     } = useContext(UnitContext)
->>>>>>>> origin/master:client/src/Components/Card/MyCardHeader/index.jsx
+
 
     const handleEdit = () => {
         setOpenEit(true)

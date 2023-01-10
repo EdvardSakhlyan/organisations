@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {AppBar, Box, Button, Toolbar, Typography} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {Search, SearchIconWrapper, StyledInputBase, toolbarTypography} from "../../MUI/styledComponents"
@@ -31,7 +31,7 @@ const UpSide = ({totalCount}) => {
 
     useEffect(() => {
         searchOrganisations(setCardsArray, searchedValue.trim(), loadedUsersCount, setTotalCount).catch(e => console.log(e))
-    },[searchedValue])
+    },[searchedValue,loadedUsersCount,setCardsArray,setTotalCount])
 
 
     const debouncedChangeHandler = debounce(handleSearch, 300)
